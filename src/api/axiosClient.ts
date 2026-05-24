@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { clearStoredToken, getStoredToken } from '../utils/authStorage';
 
 const axiosClient = axios.create({
   baseURL: 'http://localhost:8080/api',
@@ -7,10 +8,18 @@ const axiosClient = axios.create({
   },
 });
 
-// Add a request interceptor
+const handleUnauthorized = () => {
+  clearStoredToken();
+  window.dispatchEvent(new Event('auth:unauthorized'));
+
+  if (window.location.pathname !== '/login') {
+    window.location.assign('/login');
+  }
+};
+
 axiosClient.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
+    const token = getStoredToken();
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -21,16 +30,13 @@ axiosClient.interceptors.request.use(
   }
 );
 
-// Add a response interceptor
 axiosClient.interceptors.response.use(
   (response) => {
     return response.data;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
-      // Clear token on 401 Unauthorized
-      localStorage.removeItem('token');
-      // Optionally dispatch an event or redirect to login here
+    if (error.response?.status === 401) {
+      handleUnauthorized();
     }
     return Promise.reject(error);
   }

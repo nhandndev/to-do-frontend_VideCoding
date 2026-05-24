@@ -8,8 +8,8 @@ export const MainLayout: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     navigate('/login');
   };
 
@@ -25,7 +25,7 @@ export const MainLayout: React.FC = () => {
               TodoApp
             </h1>
           </div>
-          
+
           <div className="flex items-center gap-4">
             <span className="text-sm font-medium text-slate-600">
               Hi, {user?.username}

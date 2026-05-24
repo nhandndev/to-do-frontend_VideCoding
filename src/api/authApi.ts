@@ -11,6 +11,10 @@ export const authApi = {
     return axiosClient.post('/auth/login', data);
   },
 
+  logout: (): Promise<ApiResponse<null>> => {
+    return axiosClient.post('/auth/logout');
+  },
+
   getMyInfo: (): Promise<ApiResponse<User>> => {
     return axiosClient.get('/users/me');
   },
