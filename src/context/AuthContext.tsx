@@ -1,4 +1,5 @@
-import React, { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
+import type { ReactNode } from 'react';
 import type { User } from '../types/auth';
 import { authApi } from '../api/authApi';
 import { clearStoredToken, getStoredToken, persistToken } from '../utils/authStorage';

@@ -81,7 +81,6 @@ export const TodoItem: React.FC<TodoItemProps> = ({
       <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
         <Button 
           variant="ghost" 
-          size="sm" 
           className="h-8 w-8 p-0 text-slate-400 hover:text-primary hover:bg-primary/10"
           onClick={() => onEdit(todo)}
         >
@@ -89,7 +88,6 @@ export const TodoItem: React.FC<TodoItemProps> = ({
         </Button>
         <Button 
           variant="ghost" 
-          size="sm" 
           className="h-8 w-8 p-0 text-slate-400 hover:text-red-500 hover:bg-red-50"
           onClick={() => onDelete(todo.id)}
           isLoading={isDeleting}

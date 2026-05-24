@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import type { Todo, TodoStatus } from '../../types/todo';
+import type { Todo } from '../../types/todo';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 

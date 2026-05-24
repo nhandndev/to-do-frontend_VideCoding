@@ -30,7 +30,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }
       <Card className="relative w-full max-w-lg shadow-2xl p-6 animate-in fade-in zoom-in-95 duration-200">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold text-slate-800">{title}</h2>
-          <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-slate-400 hover:text-slate-600" onClick={onClose}>
+          <Button variant="ghost" className="h-8 w-8 p-0 text-slate-400 hover:text-slate-600" onClick={onClose}>
             <X size={20} />
           </Button>
         </div>
